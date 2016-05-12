@@ -1,4 +1,3 @@
-package com.wedgenetworks.deeplearning;
 
 import org.canova.api.records.reader.RecordReader;
 import org.canova.api.split.FileSplit;
