@@ -40,14 +40,23 @@ public class SDAEngine {
 
 
         log.info ("Loading the train data....");
-        RecordReader readerTrain = new TfidfRecordReader ();
-        readerTrain.initialize (new FileSplit (new File ("/Users/akshitatyagi/Downloads/Corpuses/Train/")));    // Labeled path to the training vectors
+        TfidfVectorizer vectorizer = new TfidfVectorizer();
+        Configuration config = new Configuration();
+        config.setInt(TfidfVectorizer.MIN_WORD_FREQUENCY, 15);
+        vectorizer.initialize(config);
+
+        TfidfRecordReader readerTrain = new TfidfRecordReader();
+        readerTrain.initialize (config, new FileSplit (new File ("/Users/akshitatyagi/Downloads/Corpuses/Train/")));                           // Labeled path to the training vectors
         DataSetIterator trainIter = new RecordReaderDataSetIterator (readerTrain, batchSize);
+
+        int inputNum = readerTrain.getNumFeatures();
+        log.info(" Number of Features: " + inputNum);
 
 
         log.info ("Loading the test data...");
-        RecordReader readerTest = new TfidfRecordReader ();
-        readerTest.initialize (new FileSplit (new File ("/Users/akshitatyagi/Downloads/Corpuses/Test/")));      // Labeled path to the text vectors
+        TfidfRecordReader readerTest = new TfidfRecordReader ();
+        readerTest.initialize (config, new FileSplit (new File ("/Users/akshitatyagi/Downloads/Corpuses/Test/")));                             // Labeled path to the text vectors
+        readerTest.setTfidfVectorizer(readerTrain.getTfidfVectorizer());                                                                       //reuse vectorizer
         DataSetIterator testIter = new RecordReaderDataSetIterator (readerTest, batchSize);
 
 
