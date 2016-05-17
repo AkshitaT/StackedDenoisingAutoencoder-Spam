@@ -40,10 +40,8 @@ public class SDAEngine {
 
 
         log.info ("Loading the train data....");
-        TfidfVectorizer vectorizer = new TfidfVectorizer();
         Configuration config = new Configuration();
         config.setInt(TfidfVectorizer.MIN_WORD_FREQUENCY, 15);
-        vectorizer.initialize(config);
 
         TfidfRecordReader readerTrain = new TfidfRecordReader();
         readerTrain.initialize (config, new FileSplit (new File ("/Users/akshitatyagi/Downloads/Corpuses/Train/")));                           // Labeled path to the training vectors
