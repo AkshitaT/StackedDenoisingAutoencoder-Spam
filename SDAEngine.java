@@ -44,7 +44,7 @@ public class SDAEngine {
         config.setInt(TfidfVectorizer.MIN_WORD_FREQUENCY, 15);
 
         TfidfRecordReader readerTrain = new TfidfRecordReader();
-        readerTrain.initialize (config, new FileSplit (new File ("/Users/akshitatyagi/Downloads/Corpuses/Train/")));                           // Labeled path to the training vectors
+        readerTrain.initialize (config, new FileSplit (new File ("Train/")));                           // Labeled path to the training vectors
         DataSetIterator trainIter = new RecordReaderDataSetIterator (readerTrain, batchSize);
 
         int inputNum = readerTrain.getNumFeatures();
@@ -53,7 +53,7 @@ public class SDAEngine {
 
         log.info ("Loading the test data...");
         TfidfRecordReader readerTest = new TfidfRecordReader ();
-        readerTest.initialize (config, new FileSplit (new File ("/Users/akshitatyagi/Downloads/Corpuses/Test/")));                             // Labeled path to the text vectors
+        readerTest.initialize (config, new FileSplit (new File ("Test/")));                             // Labeled path to the text vectors
         readerTest.setTfidfVectorizer(readerTrain.getTfidfVectorizer());                                                                       //reuse vectorizer
         DataSetIterator testIter = new RecordReaderDataSetIterator (readerTest, batchSize);
 
