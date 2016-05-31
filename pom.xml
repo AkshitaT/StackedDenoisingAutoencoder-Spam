@@ -13,7 +13,7 @@
     <properties>
         <nd4j.version>0.4-rc3.9</nd4j.version>
         <dl4j.version>0.4-rc3.9</dl4j.version>
-        <canova.version>0.0.0.15</canova.version>
+        <canova.version>0.0.0.16-SNAPSHOT</canova.version>
     </properties>
 
     <repositories>
@@ -64,13 +64,23 @@
         </dependency>
         <dependency>
             <groupId>org.nd4j</groupId>
+            <artifactId>canova-parent</artifactId>
+            <version>0.0.0.16-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.nd4j</groupId>
             <artifactId>canova-data-nlp</artifactId>
-            <version>0.0.0.15</version>
+            <version>0.0.0.16-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.nd4j</groupId>
             <artifactId>canova-nd4j-nlp</artifactId>
-            <version>0.0.0.15</version>
+            <version>0.0.0.16-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.nd4j</groupId>
+            <artifactId>nd4j-api</artifactId>
+            <version>0.4-rc3.10-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
